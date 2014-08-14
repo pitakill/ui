@@ -5,7 +5,6 @@ body
   font-family 'Roboto', 'Droid Sans', sans-serif
   font-size 16px
   margin 0
-  padding .5rem
   position relative
 
 body, html
@@ -77,13 +76,27 @@ header
   float right
   padding 0 2rem 0 0
 
-.uno, .dos, .tres
+.test
+  font-size 10em
   width 100%
   height 100%
+  line-height 400%
+  position absolute
+  top 0
+  left 0
+  text-align center
+  z-index -50
 
-.uno
-  background peru
-.dos
-  background grey
-.tres
-  background cyan
+.visitas
+  z-index -40
+.agentes
+  display none
+.mapas
+  display none
+
+#wrapper
+  height 100%
+  overflow-y hidden
+  position relative
+  width 100%
+  white-space nowrap

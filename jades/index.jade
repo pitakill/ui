@@ -1,24 +1,27 @@
 doctype html
 html
-  head
-    meta(charset='UTF-8')
-    link(rel='stylesheet', href='css/animate.min.css', type='text/css')
-    link(href='//fonts.googleapis.com/css?family=Roboto', rel='stylesheet', type='text/css')
-    link(rel='stylesheet', href='css/main.css', type='text/css')
-    script(src='js/jquery.min.js')
-  body
+head
+  meta(charset='UTF-8')
+  link(rel='stylesheet', href='css/normalize.css', type='text/css')
+  link(rel='stylesheet', href='css/animate.min.css', type='text/css')
+  link(href='//fonts.googleapis.com/css?family=Roboto', rel='stylesheet', type='text/css')
+  link(rel='stylesheet', href='css/main.css', type='text/css')
+  script(src='js/jquery.min.js')
+  script(src='js/main.js')
+body
+  #wrapper
     header
       nav.menu
         ul
           li
-            a#visitas.activo(href='#') visitas
+            a#visitas.nav.activo(href='#') visitas
           li
-            a#agentes(href='#') agentes
+            a#agentes.nav(href='#') agentes
           li
-            a#mapas(href='#') mapas
-    section.uno
-    section.dos
-    section.tres
+            a#mapas.nav(href='#') mapas
+    section.test.visitas 1
+    section.test.agentes 2
+    section.test.mapas 3
     footer
       h2 ¿necesitas ayuda?
-
+      h5

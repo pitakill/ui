@@ -1,5 +1,6 @@
 module.exports = function(grunt) {
   var vendorScriptFiles = 'bower_components/jquery/dist/jquery.min.js',
+      scriptFiles = 'scripts/main.js',
       vendorStyleFiles = [
         'bower_components/animate.css/animate.min.css',
         'bower_components/normalize.css/normalize.css'
@@ -13,6 +14,12 @@ module.exports = function(grunt) {
         flatten: true,
         src: 'assets/*',
         dest: 'web/img/'
+      },
+      scriptFiles: {
+        expand: true,
+        flatten: true,
+        src: scriptFiles,
+        dest: 'web/js/'
       },
       vendorScriptFiles: {
         expand: true,
@@ -43,6 +50,23 @@ module.exports = function(grunt) {
           'web/css/main.css': 'stylus/main.styl'
         }
       }
+    },
+    watch: {
+      options: {
+        livereload: true
+      },
+      css: {
+        files: 'stylus/*.styl',
+        task: ['stylusCompile'],
+      },
+      html: {
+        files: 'jades/*.jade',
+        task: ['jadeCompile']
+      },
+      scripts: {
+        files: 'scripts/*.js',
+        task:['copy:scriptFiles']
+      }
     }
   });
 
@@ -52,7 +76,11 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-watch');
 
   grunt.registerTask('assetsCopy', ['copy:assets']);
-  grunt.registerTask('scriptFilesCopy', ['copy:vendorScriptFiles']);
+  grunt.registerTask('scriptFiles', ['copy:scriptFiles']);
+  grunt.registerTask('scriptFilesCopy', [
+    'copy:vendorScriptFiles',
+    'copy:scriptFiles'
+  ]);
   grunt.registerTask('styleFilesCopy', ['copy:vendorStyleFiles']);
 
   grunt.registerTask('jadeCompile', ['jade:compile']);
