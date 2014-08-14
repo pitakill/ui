@@ -9,6 +9,8 @@ module.exports = function(grunt) {
     pkg: grunt.file.readJSON('package.json'),
     copy: {
       assets: {
+        expand: true,
+        flatten: true,
         src: 'assets/*',
         dest: 'web/img/'
       },
