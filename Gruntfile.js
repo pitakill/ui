@@ -44,6 +44,14 @@ module.exports = function(grunt) {
         }
       }
     },
+    jshint: {
+      all: {
+        src: [
+          'Gruntfile.js',
+          'scripts/*.js'
+        ]
+      }
+    },
     stylus: {
       compile: {
         files: {
@@ -57,21 +65,29 @@ module.exports = function(grunt) {
       },
       css: {
         files: 'stylus/*.styl',
-        task: ['stylusCompile'],
+        tasks: 'stylus'
       },
       html: {
         files: 'jades/*.jade',
-        task: ['jadeCompile']
+        tasks: 'jade'
       },
       scripts: {
         files: 'scripts/*.js',
-        task:['copy:scriptFiles']
+        tasks: 'scriptFiles'
+      },
+      verifyScripts: {
+        files: [
+          'scripts/*js',
+          'Gruntfile.js'
+        ],
+        tasks: 'jshint'
       }
     }
   });
 
   grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-contrib-jade');
+  grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-stylus');
   grunt.loadNpmTasks('grunt-contrib-watch');
 
